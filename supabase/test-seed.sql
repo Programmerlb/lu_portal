@@ -16,8 +16,8 @@ on conflict (id) do update set
 insert into public.academic_years (id, label, start_date, end_date, is_active)
 values
   ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2025-2026', '2025-09-01', '2026-07-31', false),
-  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2027', '2026-2027', '2026-09-01', '2027-07-31', true),
-  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2028', '2027-2028', '2027-09-01', '2028-07-31', false)
+  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2027', '2026-2027', '2026-09-01', '2027-07-31', true),
+  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2028', '2027-2028', '2027-09-01', '2028-07-31', false)
 on conflict (id) do update set
   label = excluded.label,
   start_date = excluded.start_date,
@@ -37,20 +37,20 @@ values
    '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
    1, 'Fall 2025-2026 (Demo)', 'الفصل الأول 2025-2026 (تجريبي)',
    '2025-09-15', '2026-01-31', '2025-08-15', '2025-09-10', '2026-01-10', '2026-01-31', 'archived'),
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb202701',
-   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2027',
+  ('bbbbbbbb-bbbb-bbbb-bbbb-000000002701',
+   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2027',
    1, 'Fall 2026-2027 (Demo)', 'الفصل الأول 2026-2027 (تجريبي)',
    '2026-09-15', '2027-01-31', '2026-08-15', '2026-09-10', '2027-01-10', '2027-01-31', 'active'),
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb202702',
-   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2027',
+  ('bbbbbbbb-bbbb-bbbb-bbbb-000000002702',
+   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2027',
    2, 'Spring 2026-2027 (Demo)', 'الفصل الثاني 2026-2027 (تجريبي)',
    '2027-02-15', '2027-06-30', '2027-01-15', '2027-02-10', '2027-06-01', '2027-06-30', 'upcoming'),
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb202703',
-   '22222222-2222-2222-2222-222222222222', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2027',
+  ('bbbbbbbb-bbbb-bbbb-bbbb-000000002703',
+   '22222222-2222-2222-2222-222222222222', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2027',
    1, 'Fall 2026-2027 CS (Demo)', 'الفصل الأول 2026-2027 علوم الحاسوب (تجريبي)',
    '2026-09-15', '2027-01-31', '2026-08-15', '2026-09-10', '2027-01-10', '2027-01-31', 'upcoming'),
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbb202801',
-   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaa2028',
+  ('bbbbbbbb-bbbb-bbbb-bbbb-000000002801',
+   '11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa2028',
    1, 'Fall 2027-2028 (Demo)', 'الفصل الأول 2027-2028 (تجريبي)',
    '2027-09-15', '2028-01-31', '2027-08-15', '2027-09-10', '2028-01-10', '2028-01-31', 'upcoming')
 on conflict (id) do update set
