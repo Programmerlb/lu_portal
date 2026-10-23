@@ -82,7 +82,7 @@ export default async function StudentDashboardPage() {
             </ul>
           )}
         </Section>
-        <Section title={t("dashboard.upcomingExams")} href="/calendar?view=agenda">
+        <Section title={t("dashboard.upcomingExams")} href="/calendar">
           {(exams.data ?? []).length === 0 ? (
             <p className="text-xs text-slate-500">—</p>
           ) : (
