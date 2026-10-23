@@ -1,6 +1,8 @@
 -- Public read-only learning catalog. Writes remain protected by existing admin/doctor policies.
 -- Files in this bucket are intentionally publicly downloadable for open learning access.
 
+grant select on public.academic_programs, public.academic_years, public.semesters, public.courses, public.lectures, public.resources to anon, authenticated;
+
 drop policy if exists "public_learning_programs_read" on public.academic_programs;
 create policy "public_learning_programs_read" on public.academic_programs
   for select to anon, authenticated using (true);
@@ -32,7 +34,6 @@ set public = true,
       'application/pdf',
       'application/vnd.openxmlformats-officedocument.presentationml.presentation',
       'application/vnd.ms-powerpoint',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.presentation',
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
       'application/msword',
       'application/vnd.ms-excel',
