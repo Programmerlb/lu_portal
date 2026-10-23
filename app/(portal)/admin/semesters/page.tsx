@@ -21,7 +21,7 @@ export default async function AdminSemestersPage() {
     id: string; program_id: string; academic_year_id: string; number: number; name_en: string; name_ar: string;
     start_date: string; end_date: string; registration_start: string | null; registration_end: string | null;
     exam_start: string | null; exam_end: string | null; status: "upcoming" | "active" | "archived";
-    academic_programs: { name_en: string } | null; academic_years: { label: string } | null;
+    academic_programs: { name_en: string }[]; academic_years: { label: string }[];
   }>;
 
   return (
@@ -41,7 +41,7 @@ export default async function AdminSemestersPage() {
         {rows.length === 0 && <p className="text-sm text-slate-500">No semesters found.</p>}
         {rows.map((s) => (
           <details key={s.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700">
-            <summary className="cursor-pointer font-medium">{s.name_en} — {s.academic_years?.label ?? "Unknown year"} · {s.academic_programs?.name_en ?? "Unknown program"} · {s.status}</summary>
+            <summary className="cursor-pointer font-medium">{s.name_en} — {s.academic_years?.[0]?.label ?? "Unknown year"} · {s.academic_programs?.[0]?.name_en ?? "Unknown program"} · {s.status}</summary>
             <div className="mt-4">
               <SemesterForm action={updateSemesterAction} programs={programOptions} years={yearOptions}
                 submitLabel="Save changes" defaults={{...s, registration_start: s.registration_start, registration_end: s.registration_end, exam_start: s.exam_start, exam_end: s.exam_end}} />
