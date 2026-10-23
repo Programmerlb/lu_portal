@@ -71,11 +71,13 @@ export async function updateCourseAction(formData: FormData): Promise<ActionResu
     if (error) return { ok: false, error: error.message };
   }
 
-  await supabase.from("course_doctors").delete().eq("course_id", id);
+  const { error: deleteDoctorsError } = await supabase.from("course_doctors").delete().eq("course_id", id);
+  if (deleteDoctorsError) return { ok: false, error: `Course saved, but existing doctor assignments could not be cleared: ${deleteDoctorsError.message}` };
   if (doctor_ids && doctor_ids.length > 0) {
-    await supabase.from("course_doctors").insert(
+    const { error: insertDoctorsError } = await supabase.from("course_doctors").insert(
       doctor_ids.map((d, i) => ({ course_id: id, doctor_id: d, is_primary: i === 0 }))
     );
+    if (insertDoctorsError) return { ok: false, error: `Course saved, but doctor assignments could not be updated: ${insertDoctorsError.message}` };
   }
 
   revalidatePath("/admin/courses");
