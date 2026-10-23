@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import type { Route } from "next";
 
-export interface NavItem { href: string; label: string; }
+export interface NavItem { href: Route; label: string; }
 
 export function MobileNav({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
