@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import type { Route } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { ROLE_HOME, type Role } from "@/lib/constants";
@@ -37,7 +38,7 @@ export default async function PortalLayout({ children }: { children: React.React
     ]);
 
   const role = (profile?.role ?? "student") as Role;
-  const home = ROLE_HOME[role];
+  const home: Route = ROLE_HOME[role];
 
   const urgentIds = (urgent ?? []).map((u) => u.id);
   let visibleUrgent: UrgentItem[] = [];
@@ -53,7 +54,7 @@ export default async function PortalLayout({ children }: { children: React.React
     }).map((u) => ({ id: u.id, title: u.title, requires_acknowledgment: u.requires_acknowledgment }));
   }
 
-  const baseNav = (items: NavItem[]) => [
+  const baseNav = (items: NavItem[]): NavItem[] => [
     { href: home, label: t("nav.dashboard") },
     ...items,
     { href: "/profile", label: t("nav.profile") },
