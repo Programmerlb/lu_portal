@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Route } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/permissions";
@@ -118,7 +119,7 @@ export default async function StudentDashboardPage() {
   );
 }
 
-function Section({ title, href, children }: { title: string; href?: string; children: React.ReactNode }) {
+function Section({ title, href, children }: { title: string; href?: Route; children: React.ReactNode }) {
   return (
     <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
       <div className="mb-2 flex items-center justify-between">
