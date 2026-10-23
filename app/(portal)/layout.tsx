@@ -63,6 +63,7 @@ export default async function PortalLayout({ children }: { children: React.React
     role === "admin"
       ? baseNav([
           { href: "/admin/courses", label: t("nav.courses") },
+          { href: "/admin/semesters", label: "Semesters" },
           { href: "/schedule/main", label: t("nav.mainSchedule") },
           { href: "/schedule/changes", label: t("nav.changeRequests") },
           { href: "/announcements", label: t("nav.announcements") },
