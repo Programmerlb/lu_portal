@@ -32,7 +32,8 @@ export async function updateSession(request: NextRequest) {
     path.startsWith("/api") ||
     path === "/favicon.ico" ||
     /\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$/.test(path);
-  const isProtected = !isAuthRoute && !isPublicAsset;
+  const isPublicLearningRoute = path === "/" || path === "/learn" || path.startsWith("/learn/");
+  const isProtected = !isAuthRoute && !isPublicAsset && !isPublicLearningRoute;
 
   if (!user && isProtected) {
     const url = request.nextUrl.clone();
