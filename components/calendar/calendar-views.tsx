@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Route } from "next";
 import { dowFromDateString, formatLongDate, monthDates, weekDates } from "@/lib/date-utils";
 import type { ScheduleSession } from "@/lib/schedule-engine";
 
@@ -28,7 +29,7 @@ const CATEGORY_STYLE: Record<string, string> = {
 export function EventChip({ item, compact = false }: { item: CalendarItem; compact?: boolean }) {
   const style = CATEGORY_STYLE[item.category] ?? CATEGORY_STYLE.other;
   return (
-    <Link href={item.href}
+    <Link href={item.href as Route}
       className={`block rounded border px-2 py-1 text-xs hover:brightness-95 ${style}`}
       title={item.subtitle ?? item.title}>
       <span className="font-medium">{item.start ?? ""} </span>
