@@ -50,8 +50,8 @@ export default async function CourseDetailPage({ params }: Params) {
           {course.name_ar && <p className="mt-1 text-sm text-slate-700">{course.name_ar}</p>}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Badge variant={course.semesters?.status === "active" ? "success" : "neutral"}>
-            {course.semesters?.status ?? "—"}
+          <Badge variant={course.semesters?.[0]?.status === "active" ? "success" : "neutral"}>
+            {course.semesters?.[0]?.status ?? "—"}
           </Badge>
           {canManage && (
             <>
