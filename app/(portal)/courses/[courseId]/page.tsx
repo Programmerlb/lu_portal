@@ -44,7 +44,7 @@ export default async function CourseDetailPage({ params }: Params) {
         <div>
           <h1 className="text-2xl font-semibold">{course.name_en}</h1>
           <p className="mt-1 text-sm text-slate-500">
-            {course.code} · {course.semesters?.name_en ?? "—"}
+            {course.code} · {course.semesters?.[0]?.name_en ?? "—"}
             {course.credits ? ` · ${course.credits} credits` : ""}
           </p>
           {course.name_ar && <p className="mt-1 text-sm text-slate-700">{course.name_ar}</p>}
